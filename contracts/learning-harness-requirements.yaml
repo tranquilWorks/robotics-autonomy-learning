@@ -1,0 +1,32 @@
+schema_version: 1
+product: robotics-autonomy-learning
+runtime: MATLAB
+learning_cycle:
+- read
+- visualize-baseline
+- move-one-lever
+- visualize-delta
+- read-and-explain
+module_requirements:
+  notebook_cells: true
+  interactive_controls: true
+  deterministic_model: true
+  complementary_views: 2
+  parameter_sweeps: 2
+  broken_cases: 1
+  executable_checks: true
+  teach_back: true
+  prefer_base_matlab: true
+implementation_frontier:
+  rule: implemented modules form a contiguous canonical prefix
+  reference_module: P01
+  next_batch: P02
+evidence_taxonomy:
+- static
+- simulated
+- matlab-runtime
+- protocol
+- bench
+- hil
+- field
+- production

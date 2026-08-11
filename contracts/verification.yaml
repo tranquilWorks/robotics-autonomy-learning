@@ -1,0 +1,15 @@
+schema_version: 1
+levels:
+  static: required
+  simulated: module-specific
+  matlab_runtime: optional_named_evidence
+  protocol: not_applicable_by_default
+  bench: not_applicable_by_default
+  hil: not_applicable_by_default
+  field: not_applicable_by_default
+  production: not_applicable
+manual_gates:
+- learner teach-back before personal completion
+known_limitations:
+- CI does not include a licensed MATLAB runtime.
+- Static checks cannot prove numerical correctness, UI behavior, or educational effectiveness.

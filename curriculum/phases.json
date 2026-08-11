@@ -1,0 +1,46 @@
+{
+  "phases": [
+    {
+      "phase": 1,
+      "title": "Kinematics",
+      "module_start": 1,
+      "module_end": 4,
+      "learning_goal": "Build visible, manipulable intuition for kinematics."
+    },
+    {
+      "phase": 2,
+      "title": "Dynamics and actuation",
+      "module_start": 5,
+      "module_end": 8,
+      "learning_goal": "Build visible, manipulable intuition for dynamics and actuation."
+    },
+    {
+      "phase": 3,
+      "title": "Sensing and calibration",
+      "module_start": 9,
+      "module_end": 12,
+      "learning_goal": "Build visible, manipulable intuition for sensing and calibration."
+    },
+    {
+      "phase": 4,
+      "title": "Localization and mapping",
+      "module_start": 13,
+      "module_end": 16,
+      "learning_goal": "Build visible, manipulable intuition for localization and mapping."
+    },
+    {
+      "phase": 5,
+      "title": "Planning and behavior",
+      "module_start": 17,
+      "module_end": 20,
+      "learning_goal": "Build visible, manipulable intuition for planning and behavior."
+    },
+    {
+      "phase": 6,
+      "title": "Autonomous system integration",
+      "module_start": 21,
+      "module_end": 24,
+      "learning_goal": "Build visible, manipulable intuition for autonomous system integration."
+    }
+  ]
+}

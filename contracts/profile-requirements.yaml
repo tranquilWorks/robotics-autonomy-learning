@@ -1,0 +1,26 @@
+schema_version: 1
+profile: product-data
+intent: Preserve product doctrine, canonical data, scoring semantics, migrations, and recoverability.
+required_gates:
+  - schema-validation
+  - canonical-data-validation
+  - uniqueness-and-completeness
+  - scoring-invariant-tests
+  - migration-and-rollback-tests
+  - backup-restore-smoke
+  - service-smoke-tests
+required_evidence:
+  - dataset-counts
+  - invariant-results
+  - migration-results
+  - rollback-path
+prohibited_autonomy:
+  - destructive-data-migration
+  - production-data-write
+  - merge-protected-branch
+review_focus:
+  - canonical-source-violations
+  - placeholder-or-generic-content
+  - scoring-regressions
+  - schema-drift
+  - backup-and-restore

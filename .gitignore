@@ -1,0 +1,16 @@
+.learning/
+*.asv
+slprj/
+codegen/
+*.mex*
+*.fig
+*.mat
+html/
+__pycache__/
+*.pyc
+docs/evidence/local/*.log
+
+# BEGIN PORTFOLIO-CONTROL MANAGED
+.codex-tmp/
+.agent-logs/
+# END PORTFOLIO-CONTROL MANAGED

@@ -1,0 +1,408 @@
+{
+  "schema_version": 1,
+  "product": "robotics-autonomy-learning",
+  "title": "Robotics and Autonomy",
+  "purpose": "Combine kinematics, dynamics, sensing, estimation, planning, real-time execution, and safety in complete autonomous systems.",
+  "module_count": 24,
+  "progression_rule": "Complete modules in order until the first six are complete; later modules may be selected when their prerequisites are met.",
+  "interaction_contract": {
+    "environment": "MATLAB",
+    "notebook_format": "MATLAB scripts with %% Live Editor cells",
+    "lever_ui": "uifigure controls",
+    "required_sweeps": 2,
+    "required_broken_cases": 1,
+    "randomness": "seeded",
+    "base_matlab_preferred": true,
+    "learning_cycle": [
+      "read",
+      "visualize-baseline",
+      "move-one-lever",
+      "visualize-delta",
+      "read-and-explain"
+    ]
+  },
+  "modules": [
+    {
+      "number": 1,
+      "id": "P01",
+      "title": "Drive a Differential Robot with Wheel Speeds",
+      "guiding_question": "How do left and right wheel speeds determine a differential-drive robot's path?",
+      "phase": 1,
+      "phase_title": "Kinematics",
+      "slug": "drive-a-differential-robot-with-wheel-speeds",
+      "folder": "modules/01-drive-a-differential-robot-with-wheel-speeds",
+      "status": "implemented",
+      "implementation_batch": "P01",
+      "prerequisites": [],
+      "evidence_level": "simulated"
+    },
+    {
+      "number": 2,
+      "id": "P02",
+      "title": "Transform Coordinates Between Frames",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you transform Coordinates Between Frames?",
+      "phase": 1,
+      "phase_title": "Kinematics",
+      "slug": "transform-coordinates-between-frames",
+      "folder": "modules/02-transform-coordinates-between-frames",
+      "status": "scaffolded",
+      "implementation_batch": "P02",
+      "prerequisites": [
+        "P01"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 3,
+      "id": "P03",
+      "title": "Compute Arm Forward Kinematics",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you compute Arm Forward Kinematics?",
+      "phase": 1,
+      "phase_title": "Kinematics",
+      "slug": "compute-arm-forward-kinematics",
+      "folder": "modules/03-compute-arm-forward-kinematics",
+      "status": "scaffolded",
+      "implementation_batch": "P03",
+      "prerequisites": [
+        "P02"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 4,
+      "id": "P04",
+      "title": "Solve Inverse Kinematics",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you solve Inverse Kinematics?",
+      "phase": 1,
+      "phase_title": "Kinematics",
+      "slug": "solve-inverse-kinematics",
+      "folder": "modules/04-solve-inverse-kinematics",
+      "status": "scaffolded",
+      "implementation_batch": "P04",
+      "prerequisites": [
+        "P03"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 5,
+      "id": "P05",
+      "title": "Model a DC Motor and Geartrain",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you model a DC Motor and Geartrain?",
+      "phase": 2,
+      "phase_title": "Dynamics and actuation",
+      "slug": "model-a-dc-motor-and-geartrain",
+      "folder": "modules/05-model-a-dc-motor-and-geartrain",
+      "status": "scaffolded",
+      "implementation_batch": "P05",
+      "prerequisites": [
+        "P04"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 6,
+      "id": "P06",
+      "title": "Close a Wheel-Speed Loop",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you close a Wheel-Speed Loop?",
+      "phase": 2,
+      "phase_title": "Dynamics and actuation",
+      "slug": "close-a-wheel-speed-loop",
+      "folder": "modules/06-close-a-wheel-speed-loop",
+      "status": "scaffolded",
+      "implementation_batch": "P06",
+      "prerequisites": [
+        "P05"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 7,
+      "id": "P07",
+      "title": "Generate a Smooth Trajectory",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you generate a Smooth Trajectory?",
+      "phase": 2,
+      "phase_title": "Dynamics and actuation",
+      "slug": "generate-a-smooth-trajectory",
+      "folder": "modules/07-generate-a-smooth-trajectory",
+      "status": "scaffolded",
+      "implementation_batch": "P07",
+      "prerequisites": [
+        "P06"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 8,
+      "id": "P08",
+      "title": "Control Contact with Impedance",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you control Contact with Impedance?",
+      "phase": 2,
+      "phase_title": "Dynamics and actuation",
+      "slug": "control-contact-with-impedance",
+      "folder": "modules/08-control-contact-with-impedance",
+      "status": "scaffolded",
+      "implementation_batch": "P08",
+      "prerequisites": [
+        "P07"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 9,
+      "id": "P09",
+      "title": "Measure Motion with Encoders",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you measure Motion with Encoders?",
+      "phase": 3,
+      "phase_title": "Sensing and calibration",
+      "slug": "measure-motion-with-encoders",
+      "folder": "modules/09-measure-motion-with-encoders",
+      "status": "scaffolded",
+      "implementation_batch": "P09",
+      "prerequisites": [
+        "P08"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 10,
+      "id": "P10",
+      "title": "Integrate an IMU and Observe Drift",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you integrate an IMU and Observe Drift?",
+      "phase": 3,
+      "phase_title": "Sensing and calibration",
+      "slug": "integrate-an-imu-and-observe-drift",
+      "folder": "modules/10-integrate-an-imu-and-observe-drift",
+      "status": "scaffolded",
+      "implementation_batch": "P10",
+      "prerequisites": [
+        "P09"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 11,
+      "id": "P11",
+      "title": "Build a Range Sensor Model",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you build a Range Sensor Model?",
+      "phase": 3,
+      "phase_title": "Sensing and calibration",
+      "slug": "build-a-range-sensor-model",
+      "folder": "modules/11-build-a-range-sensor-model",
+      "status": "scaffolded",
+      "implementation_batch": "P11",
+      "prerequisites": [
+        "P10"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 12,
+      "id": "P12",
+      "title": "Calibrate Sensor Extrinsics",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you calibrate Sensor Extrinsics?",
+      "phase": 3,
+      "phase_title": "Sensing and calibration",
+      "slug": "calibrate-sensor-extrinsics",
+      "folder": "modules/12-calibrate-sensor-extrinsics",
+      "status": "scaffolded",
+      "implementation_batch": "P12",
+      "prerequisites": [
+        "P11"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 13,
+      "id": "P13",
+      "title": "Integrate Wheel Odometry",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you integrate Wheel Odometry?",
+      "phase": 4,
+      "phase_title": "Localization and mapping",
+      "slug": "integrate-wheel-odometry",
+      "folder": "modules/13-integrate-wheel-odometry",
+      "status": "scaffolded",
+      "implementation_batch": "P13",
+      "prerequisites": [
+        "P12"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 14,
+      "id": "P14",
+      "title": "Fuse Sensors with an EKF",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you fuse Sensors with an EKF?",
+      "phase": 4,
+      "phase_title": "Localization and mapping",
+      "slug": "fuse-sensors-with-an-ekf",
+      "folder": "modules/14-fuse-sensors-with-an-ekf",
+      "status": "scaffolded",
+      "implementation_batch": "P14",
+      "prerequisites": [
+        "P13"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 15,
+      "id": "P15",
+      "title": "Localize with a Particle Filter",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you localize with a Particle Filter?",
+      "phase": 4,
+      "phase_title": "Localization and mapping",
+      "slug": "localize-with-a-particle-filter",
+      "folder": "modules/15-localize-with-a-particle-filter",
+      "status": "scaffolded",
+      "implementation_batch": "P15",
+      "prerequisites": [
+        "P14"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 16,
+      "id": "P16",
+      "title": "Build a Small SLAM Problem",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you build a Small SLAM Problem?",
+      "phase": 4,
+      "phase_title": "Localization and mapping",
+      "slug": "build-a-small-slam-problem",
+      "folder": "modules/16-build-a-small-slam-problem",
+      "status": "scaffolded",
+      "implementation_batch": "P16",
+      "prerequisites": [
+        "P15"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 17,
+      "id": "P17",
+      "title": "Search a Grid with A-Star",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you search a Grid with A-Star?",
+      "phase": 5,
+      "phase_title": "Planning and behavior",
+      "slug": "search-a-grid-with-a-star",
+      "folder": "modules/17-search-a-grid-with-a-star",
+      "status": "scaffolded",
+      "implementation_batch": "P17",
+      "prerequisites": [
+        "P16"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 18,
+      "id": "P18",
+      "title": "Plan with Random Samples",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you plan with Random Samples?",
+      "phase": 5,
+      "phase_title": "Planning and behavior",
+      "slug": "plan-with-random-samples",
+      "folder": "modules/18-plan-with-random-samples",
+      "status": "scaffolded",
+      "implementation_batch": "P18",
+      "prerequisites": [
+        "P17"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 19,
+      "id": "P19",
+      "title": "Avoid Moving Obstacles",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you avoid Moving Obstacles?",
+      "phase": 5,
+      "phase_title": "Planning and behavior",
+      "slug": "avoid-moving-obstacles",
+      "folder": "modules/19-avoid-moving-obstacles",
+      "status": "scaffolded",
+      "implementation_batch": "P19",
+      "prerequisites": [
+        "P18"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 20,
+      "id": "P20",
+      "title": "Coordinate Actions with a Behavior Tree",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you coordinate Actions with a Behavior Tree?",
+      "phase": 5,
+      "phase_title": "Planning and behavior",
+      "slug": "coordinate-actions-with-a-behavior-tree",
+      "folder": "modules/20-coordinate-actions-with-a-behavior-tree",
+      "status": "scaffolded",
+      "implementation_batch": "P20",
+      "prerequisites": [
+        "P19"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 21,
+      "id": "P21",
+      "title": "Execute a Mission State Machine",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you execute a Mission State Machine?",
+      "phase": 6,
+      "phase_title": "Autonomous system integration",
+      "slug": "execute-a-mission-state-machine",
+      "folder": "modules/21-execute-a-mission-state-machine",
+      "status": "scaffolded",
+      "implementation_batch": "P21",
+      "prerequisites": [
+        "P20"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 22,
+      "id": "P22",
+      "title": "Meet Real-Time Perception and Control Deadlines",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you meet Real-Time Perception and Control Deadlines?",
+      "phase": 6,
+      "phase_title": "Autonomous system integration",
+      "slug": "meet-real-time-perception-and-control-deadlines",
+      "folder": "modules/22-meet-real-time-perception-and-control-deadlines",
+      "status": "scaffolded",
+      "implementation_batch": "P22",
+      "prerequisites": [
+        "P21"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 23,
+      "id": "P23",
+      "title": "Design Safety Monitors",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you design Safety Monitors?",
+      "phase": 6,
+      "phase_title": "Autonomous system integration",
+      "slug": "design-safety-monitors",
+      "folder": "modules/23-design-safety-monitors",
+      "status": "scaffolded",
+      "implementation_batch": "P23",
+      "prerequisites": [
+        "P22"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 24,
+      "id": "P24",
+      "title": "Validate Autonomy in HIL",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you validate Autonomy in HIL?",
+      "phase": 6,
+      "phase_title": "Autonomous system integration",
+      "slug": "validate-autonomy-in-hil",
+      "folder": "modules/24-validate-autonomy-in-hil",
+      "status": "scaffolded",
+      "implementation_batch": "P24",
+      "prerequisites": [
+        "P23"
+      ],
+      "evidence_level": "none"
+    }
+  ]
+}
