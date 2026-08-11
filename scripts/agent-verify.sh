@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
-ROOT="$(git rev-parse --show-toplevel 2>/dev/null || cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+if ROOT="$(git rev-parse --show-toplevel 2>/dev/null)"; then
+  :
+else
+  ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+fi
 COMMANDS="$ROOT/contracts/verification.commands"
 LOG_DIR="$ROOT/docs/evidence/local"
 STAMP="$(date -u +%Y%m%d-%H%M%S)"
