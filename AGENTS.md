@@ -36,7 +36,7 @@ This repository is the **Robotics and Autonomy** interactive MATLAB learning sys
 ## Governed agentic delivery
 
 - Product: `robotics-autonomy-learning`; delivery profile: `product-data`.
-- Control revision: `2206fb22691b3af0d9d6a39e582e0e9516a24c50`; harness version: `2`.
+- Control revision: `35a09aca04b4f64cc97249ddd3e81e6f46faba6b`; harness version: `2`.
 - Read `contracts/profile-requirements.yaml` and the approved
   `contracts/active-batch.yaml` before implementation.
 - Stay inside active-batch allowed paths and preserve every forbidden path.
