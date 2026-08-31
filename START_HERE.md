@@ -6,3 +6,5 @@ one-to-one to Portfolio Control batches. A learner session follows read → visu
 → visualize the change → read/explain, then a broken case, checks, and teach-back.
 
 Use `docs/CURRICULUM_AUDIT.md` for the complete phase and batch map.
+
+The separate [reference-platform contract baseline](reference-platform/README.md) is static and software-only; it does not alter tutor flow or authorize hardware work.

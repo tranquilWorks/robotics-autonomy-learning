@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "experiment.schema.json",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": 1},
+    "abort_conditions": {
+      "items": {"enum": ["command_timeout", "current_limit", "state_envelope", "operator_request"]},
+      "maxItems": 16,
+      "minItems": 4,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "acceptance_metrics": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "metric_id": {"$ref": "#/$defs/identifier"},
+          "operator": {"enum": ["eq", "lte", "gte"]},
+          "threshold": {"type": ["string", "number"]},
+          "unit": {"minLength": 1, "type": "string"}
+        },
+        "required": ["metric_id", "operator", "threshold", "unit"],
+        "type": "object"
+      },
+      "maxItems": 32,
+      "minItems": 1,
+      "type": "array"
+    },
+    "cancellation_behavior": {"const": "request_abort_and_preserve_partial_artifacts"},
+    "configuration_hash": {"$ref": "#/$defs/sha256"},
+    "configuration_id": {"$ref": "#/$defs/identifier"},
+    "contract_type": {"const": "experiment"},
+    "contract_version": {"const": "1.0.0"},
+    "controller_revision": {"$ref": "#/$defs/identifier"},
+    "current_limits_a": {"items": {"$ref": "#/$defs/current_limit"}, "maxItems": 2, "minItems": 1, "type": "array"},
+    "duration_limit_s": {"exclusiveMinimum": 0, "maximum": 30, "type": "number"},
+    "execution_domain": {"enum": ["contract_only", "simulated", "protocol_replay", "physical"]},
+    "experiment_id": {"$ref": "#/$defs/identifier"},
+    "experiment_revision": {"const": "1.0.0"},
+    "inventory_id": {"$ref": "#/$defs/identifier"},
+    "plant_model_id": {"$ref": "#/$defs/identifier"},
+    "position_or_state_limits": {"items": {"$ref": "#/$defs/state_limit"}, "maxItems": 16, "minItems": 1, "type": "array"},
+    "requested_action": {"enum": ["validate_contracts", "simulate", "replay", "physical_experiment"]},
+    "required_artifacts": {
+      "items": {"enum": ["raw_telemetry", "event_log", "metric_report", "acceptance_map"]},
+      "maxItems": 16,
+      "minItems": 4,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "restart_behavior": {"const": "require_new_authorization_and_preserve_prior_result"},
+    "sample_rate_hz": {"maximum": 10000, "minimum": 1, "type": "number"},
+    "timeout_behavior": {"const": "request_abort_and_preserve_partial_artifacts"}
+  },
+  "required": [
+    "schema_version",
+    "contract_version",
+    "contract_type",
+    "experiment_id",
+    "experiment_revision",
+    "configuration_id",
+    "configuration_hash",
+    "inventory_id",
+    "plant_model_id",
+    "controller_revision",
+    "execution_domain",
+    "requested_action",
+    "sample_rate_hz",
+    "duration_limit_s",
+    "current_limits_a",
+    "position_or_state_limits",
+    "abort_conditions",
+    "required_artifacts",
+    "acceptance_metrics",
+    "timeout_behavior",
+    "cancellation_behavior",
+    "restart_behavior"
+  ],
+  "title": "Reference-platform experiment contract v1",
+  "type": "object",
+  "$defs": {
+    "current_limit": {
+      "additionalProperties": false,
+      "properties": {
+        "joint_id": {"pattern": "^joint_[1-9][0-9]*$", "type": "string"},
+        "max_abs_a": {"exclusiveMinimum": 0, "maximum": 5, "type": "number"}
+      },
+      "required": ["joint_id", "max_abs_a"],
+      "type": "object"
+    },
+    "identifier": {"pattern": "^[a-z0-9][a-z0-9._:-]{1,127}$", "type": "string"},
+    "sha256": {"pattern": "^sha256:[0-9a-f]{64}$", "type": "string"},
+    "state_limit": {
+      "additionalProperties": false,
+      "properties": {
+        "maximum": {"maximum": 100, "minimum": -100, "type": "number"},
+        "minimum": {"maximum": 100, "minimum": -100, "type": "number"},
+        "state": {"pattern": "^[a-z][a-z0-9_]{1,63}$", "type": "string"},
+        "unit": {"enum": ["rad", "rad_s", "m", "m_s"]}
+      },
+      "required": ["state", "minimum", "maximum", "unit"],
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "result.schema.json",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": 1},
+    "acceptance_map": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "evidence_level": {"$ref": "#/$defs/evidence_level"},
+          "metric_id": {"$ref": "#/$defs/identifier"},
+          "outcome": {"enum": ["pass", "fail", "not_run"]}
+        },
+        "required": ["metric_id", "outcome", "evidence_level"],
+        "type": "object"
+      },
+      "maxItems": 64,
+      "minItems": 1,
+      "type": "array"
+    },
+    "anomalies": {"items": {"minLength": 1, "type": "string"}, "maxItems": 64, "minItems": 1, "type": "array"},
+    "authorization_id": {"$ref": "#/$defs/identifier"},
+    "contract_type": {"const": "result"},
+    "contract_version": {"const": "1.0.0"},
+    "evidence_level": {"$ref": "#/$defs/evidence_level"},
+    "exact_configuration_hash": {"$ref": "#/$defs/sha256"},
+    "experiment_id": {"$ref": "#/$defs/identifier"},
+    "metric_artifact": {"$ref": "#/$defs/artifact"},
+    "partial_artifacts_preserved": {"type": "boolean"},
+    "physical_safe_state_claimed": {"type": "boolean"},
+    "raw_telemetry_artifact": {"$ref": "#/$defs/artifact"},
+    "recovery": {
+      "additionalProperties": false,
+      "properties": {
+        "new_authorization_required": {"type": "boolean"},
+        "prior_result_id": {"oneOf": [{"$ref": "#/$defs/identifier"}, {"type": "null"}]},
+        "restart_detected": {"type": "boolean"}
+      },
+      "required": ["restart_detected", "prior_result_id", "new_authorization_required"],
+      "type": "object"
+    },
+    "residual_risks": {"items": {"minLength": 1, "type": "string"}, "maxItems": 64, "minItems": 1, "type": "array"},
+    "result_id": {"$ref": "#/$defs/identifier"},
+    "result_revision": {"const": "1.0.0"},
+    "start_timestamp": {"$ref": "#/$defs/timestamp"},
+    "stop_timestamp": {"$ref": "#/$defs/timestamp"},
+    "termination_reason": {"enum": ["completed", "cancelled", "timeout", "validation_rejected", "failed"]},
+    "unperformed_validation": {"items": {"minLength": 1, "type": "string"}, "maxItems": 64, "minItems": 1, "type": "array"}
+  },
+  "required": [
+    "schema_version",
+    "contract_version",
+    "contract_type",
+    "result_id",
+    "result_revision",
+    "experiment_id",
+    "exact_configuration_hash",
+    "authorization_id",
+    "start_timestamp",
+    "stop_timestamp",
+    "termination_reason",
+    "raw_telemetry_artifact",
+    "metric_artifact",
+    "acceptance_map",
+    "anomalies",
+    "residual_risks",
+    "unperformed_validation",
+    "partial_artifacts_preserved",
+    "physical_safe_state_claimed",
+    "recovery",
+    "evidence_level"
+  ],
+  "title": "Reference-platform result contract v1",
+  "type": "object",
+  "$defs": {
+    "artifact": {
+      "additionalProperties": false,
+      "properties": {
+        "availability": {"enum": ["embedded", "not_produced"]},
+        "evidence_level": {"$ref": "#/$defs/evidence_level"},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "uri": {"pattern": "^fixture://[a-z0-9][a-z0-9/_-]{0,255}$", "type": "string"}
+      },
+      "required": ["uri", "sha256", "availability", "evidence_level"],
+      "type": "object"
+    },
+    "evidence_level": {"enum": ["static", "simulated", "protocol_replay", "low_energy_bench", "guarded_motion", "controls_experiment", "pnp_validation", "external_alpha"]},
+    "identifier": {"pattern": "^[a-z0-9][a-z0-9._:-]{1,127}$", "type": "string"},
+    "sha256": {"pattern": "^sha256:[0-9a-f]{64}$", "type": "string"},
+    "timestamp": {"pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]+)?Z$", "type": "string"}
+  }
+}

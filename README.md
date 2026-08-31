@@ -39,6 +39,10 @@ run_module_checks("P01")
 
 `P01` is a complete reference implementation. The remaining modules are intentionally scaffolded so each can be implemented in a bounded, reviewable batch.
 
+## Reference-platform contracts
+
+The parallel [reconfigurable reference-platform track](reference-platform/README.md) currently provides software-only v1 schemas, deterministic fixtures, safety/authorization boundaries, and future cross-repository handoffs. It does not change the 24-module curriculum or demonstrate hardware capability.
+
 ## Module layout
 
 ```text

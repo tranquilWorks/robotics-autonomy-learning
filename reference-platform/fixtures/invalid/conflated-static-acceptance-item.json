@@ -1,0 +1,481 @@
+{
+  "canonicalization": "ral-json-c14n-v1",
+  "configuration": {
+    "active_joint_count": 2,
+    "calibration_set_id": "ral.calibration.drawbot_2r.unmeasured-r1",
+    "component_envelope": [],
+    "configuration_hash": "sha256:2930d9c03804d8821ae057aa590ab444d75a1f744bd38b7bc9d4fe0af3c3d40f",
+    "configuration_id": "ral.drawbot_2r.r1",
+    "configuration_kind": "drawbot_2r",
+    "configuration_revision": "1.0.0",
+    "contract_type": "configuration",
+    "contract_version": "1.0.0",
+    "controller_firmware_set_id": "ral.firmware.drawbot_2r.not-installed-r1",
+    "design_status": "proposal",
+    "experiment_schema_version": "1.0.0",
+    "gravity_plane": "horizontal",
+    "hardware_inventory_id": "ral.inventory.drawbot_2r.r1",
+    "mechanical_revision": "ral.mechanical.proposal-r1",
+    "passive_joint_count": 0,
+    "permitted_tools": [
+      "pen"
+    ],
+    "release": {
+      "decision_evidence_id": null,
+      "gate_id": null,
+      "status": "baseline"
+    },
+    "safety_envelope": {
+      "current_limits_a": [
+        {
+          "joint_id": "joint_1",
+          "max_abs_a": 1.5
+        },
+        {
+          "joint_id": "joint_2",
+          "max_abs_a": 1.5
+        }
+      ],
+      "duration_limit_s": 10.0,
+      "state_limits": [
+        {
+          "maximum": 3.0,
+          "minimum": -3.0,
+          "state": "joint_1_position_rad",
+          "unit": "rad"
+        },
+        {
+          "maximum": 4.0,
+          "minimum": -4.0,
+          "state": "joint_1_velocity_rad_s",
+          "unit": "rad_s"
+        },
+        {
+          "maximum": 3.0,
+          "minimum": -3.0,
+          "state": "joint_2_position_rad",
+          "unit": "rad"
+        },
+        {
+          "maximum": 4.0,
+          "minimum": -4.0,
+          "state": "joint_2_velocity_rad_s",
+          "unit": "rad_s"
+        }
+      ]
+    },
+    "schema_version": 1
+  },
+  "evidence": {
+    "acceptance_items": [
+      "working_drawbot",
+      "identity",
+      "canonical_hash",
+      "software_only_boundary"
+    ],
+    "artifacts": [
+      {
+        "availability": "embedded",
+        "evidence_level": "static",
+        "sha256": "sha256:2930d9c03804d8821ae057aa590ab444d75a1f744bd38b7bc9d4fe0af3c3d40f",
+        "uri": "fixture://drawbot-2r/configuration"
+      },
+      {
+        "availability": "embedded",
+        "evidence_level": "static",
+        "sha256": "sha256:a2c15dac168e45d1eb270df2f7470274ea7f5feff6cbb04fd6e3f307e6abd503",
+        "uri": "fixture://drawbot-2r/result"
+      }
+    ],
+    "claim_boundary": "Software contract validation only; no physical capability is demonstrated or accepted.",
+    "configuration_hash": "sha256:2930d9c03804d8821ae057aa590ab444d75a1f744bd38b7bc9d4fe0af3c3d40f",
+    "contract_type": "evidence",
+    "contract_version": "1.0.0",
+    "evidence_id": "ral.evidence.drawbot_2r.rp01-r1",
+    "evidence_revision": "1.0.0",
+    "required_statements": [
+      "SOFTWARE CONTRACT ONLY",
+      "HARDWARE NOT RUN",
+      "TRANQUILITY NOT CONTACTED",
+      "CONTROLS-GNC NOT MODIFIED",
+      "RELEASE NOT PERFORMED"
+    ],
+    "residual_risks": [
+      "future consumers have not yet adopted this contract revision"
+    ],
+    "result_id": "ral.result.drawbot_2r.contract-validation-r1",
+    "schema_version": 1,
+    "unperformed_validation": [
+      "MATLAB runtime and every physical validation level"
+    ],
+    "validation_level": "static"
+  },
+  "experiment": {
+    "abort_conditions": [
+      "command_timeout",
+      "current_limit",
+      "state_envelope",
+      "operator_request"
+    ],
+    "acceptance_metrics": [
+      {
+        "metric_id": "schema_valid",
+        "operator": "eq",
+        "threshold": "true",
+        "unit": "boolean"
+      },
+      {
+        "metric_id": "identity_links_valid",
+        "operator": "eq",
+        "threshold": "true",
+        "unit": "boolean"
+      }
+    ],
+    "cancellation_behavior": "request_abort_and_preserve_partial_artifacts",
+    "configuration_hash": "sha256:2930d9c03804d8821ae057aa590ab444d75a1f744bd38b7bc9d4fe0af3c3d40f",
+    "configuration_id": "ral.drawbot_2r.r1",
+    "contract_type": "experiment",
+    "contract_version": "1.0.0",
+    "controller_revision": "not_implemented",
+    "current_limits_a": [
+      {
+        "joint_id": "joint_1",
+        "max_abs_a": 1.0
+      },
+      {
+        "joint_id": "joint_2",
+        "max_abs_a": 1.0
+      }
+    ],
+    "duration_limit_s": 5.0,
+    "execution_domain": "contract_only",
+    "experiment_id": "ral.experiment.drawbot_2r.contract-validation-r1",
+    "experiment_revision": "1.0.0",
+    "inventory_id": "ral.inventory.drawbot_2r.r1",
+    "plant_model_id": "ral.plant.drawbot_2r.nominal-r1",
+    "position_or_state_limits": [
+      {
+        "maximum": 2.4000000000000004,
+        "minimum": -2.4000000000000004,
+        "state": "joint_1_position_rad",
+        "unit": "rad"
+      },
+      {
+        "maximum": 3.2,
+        "minimum": -3.2,
+        "state": "joint_1_velocity_rad_s",
+        "unit": "rad_s"
+      },
+      {
+        "maximum": 2.4000000000000004,
+        "minimum": -2.4000000000000004,
+        "state": "joint_2_position_rad",
+        "unit": "rad"
+      },
+      {
+        "maximum": 3.2,
+        "minimum": -3.2,
+        "state": "joint_2_velocity_rad_s",
+        "unit": "rad_s"
+      }
+    ],
+    "requested_action": "validate_contracts",
+    "required_artifacts": [
+      "raw_telemetry",
+      "event_log",
+      "metric_report",
+      "acceptance_map"
+    ],
+    "restart_behavior": "require_new_authorization_and_preserve_prior_result",
+    "sample_rate_hz": 100,
+    "schema_version": 1,
+    "timeout_behavior": "request_abort_and_preserve_partial_artifacts"
+  },
+  "fixture_classification": "software_contract_only",
+  "fixture_id": "ral.fixture.drawbot_2r.valid-r1",
+  "fixture_version": "1.0.0",
+  "hardware_inventory": {
+    "calibration_set_id": "ral.calibration.drawbot_2r.unmeasured-r1",
+    "components": [
+      {
+        "asset_id": null,
+        "identity_status": "planned_not_owned",
+        "instance_id": "planned.joint-controller.1",
+        "model": "moteus-c1_planned",
+        "role": "joint_controller"
+      },
+      {
+        "asset_id": null,
+        "identity_status": "planned_not_owned",
+        "instance_id": "planned.joint-controller.2",
+        "model": "moteus-c1_planned",
+        "role": "joint_controller"
+      },
+      {
+        "asset_id": null,
+        "identity_status": "planned_not_owned",
+        "instance_id": "planned.local-supervisor.1",
+        "model": "decision_required_after_G0",
+        "role": "local_supervisor"
+      },
+      {
+        "asset_id": null,
+        "identity_status": "planned_not_owned",
+        "instance_id": "planned.independent-stop.1",
+        "model": "selection_not_authorized",
+        "role": "independent_power_stop"
+      }
+    ],
+    "configuration_hash": "sha256:2930d9c03804d8821ae057aa590ab444d75a1f744bd38b7bc9d4fe0af3c3d40f",
+    "configuration_id": "ral.drawbot_2r.r1",
+    "contract_type": "hardware_inventory",
+    "contract_version": "1.0.0",
+    "controller_firmware_revisions": {
+      "revisions": [
+        {
+          "joint_id": "joint_1",
+          "revision": null
+        },
+        {
+          "joint_id": "joint_2",
+          "revision": null
+        }
+      ],
+      "set_id": "ral.firmware.drawbot_2r.not-installed-r1",
+      "status": "not_installed"
+    },
+    "encoder_identities": [
+      {
+        "asset_id": null,
+        "identity_status": "planned_not_owned",
+        "joint_id": "joint_1",
+        "model": "MA600_planned"
+      },
+      {
+        "asset_id": null,
+        "identity_status": "planned_not_owned",
+        "joint_id": "joint_2",
+        "model": "MA600_planned"
+      }
+    ],
+    "evidence_level": "static",
+    "guard_configuration": "planned_not_evaluated",
+    "identity_scope": "synthetic_not_as_built",
+    "inventory_id": "ral.inventory.drawbot_2r.r1",
+    "inventory_revision": "1.0.0",
+    "inventory_status": "planned_fixture",
+    "joint_count": 2,
+    "platform_revision": "ral.reference-platform.proposal-r1",
+    "power_configuration": "planned_unenergized_no_purchase_authority",
+    "schema_version": 1
+  },
+  "plant_model": {
+    "configuration_hash": "sha256:2930d9c03804d8821ae057aa590ab444d75a1f744bd38b7bc9d4fe0af3c3d40f",
+    "configuration_id": "ral.drawbot_2r.r1",
+    "contract_type": "plant_model",
+    "contract_version": "1.0.0",
+    "encoder_zero_offsets_rad": [
+      0.0,
+      0.0
+    ],
+    "evidence_level": "static",
+    "inertia_kg_m2": [
+      0.0061,
+      0.0039
+    ],
+    "joint_friction_model": [
+      {
+        "coulomb_nm": 0.023,
+        "joint_id": "joint_1",
+        "model": "viscous_plus_coulomb",
+        "viscous_nm_s_rad": 0.012
+      },
+      {
+        "coulomb_nm": 0.026,
+        "joint_id": "joint_2",
+        "model": "viscous_plus_coulomb",
+        "viscous_nm_s_rad": 0.014
+      }
+    ],
+    "link_lengths_m": [
+      0.24,
+      0.22
+    ],
+    "link_masses_kg": [
+      0.32,
+      0.24
+    ],
+    "parameter_source": "deterministic_nominal_fixture",
+    "plant_model_id": "ral.plant.drawbot_2r.nominal-r1",
+    "plant_model_revision": "1.0.0",
+    "schema_version": 1,
+    "transmission_ratios": [
+      4.0,
+      4.0
+    ],
+    "uncertainty": [
+      {
+        "basis": "assumed_not_measured",
+        "parameter": "link_length",
+        "plus_minus": 0.005,
+        "unit": "m"
+      },
+      {
+        "basis": "assumed_not_measured",
+        "parameter": "link_mass",
+        "plus_minus": 0.05,
+        "unit": "kg"
+      }
+    ]
+  },
+  "result": {
+    "acceptance_map": [
+      {
+        "evidence_level": "static",
+        "metric_id": "schema_valid",
+        "outcome": "pass"
+      },
+      {
+        "evidence_level": "static",
+        "metric_id": "identity_links_valid",
+        "outcome": "pass"
+      }
+    ],
+    "anomalies": [
+      "none_observed_during_static_validation"
+    ],
+    "authorization_id": "ral.authorization.drawbot_2r.withheld-r1",
+    "contract_type": "result",
+    "contract_version": "1.0.0",
+    "evidence_level": "static",
+    "exact_configuration_hash": "sha256:2930d9c03804d8821ae057aa590ab444d75a1f744bd38b7bc9d4fe0af3c3d40f",
+    "experiment_id": "ral.experiment.drawbot_2r.contract-validation-r1",
+    "metric_artifact": {
+      "availability": "embedded",
+      "evidence_level": "static",
+      "sha256": "sha256:42d8764d99ed7e437518f96f2dcdcc75994dda6b60e781c2fc36ba2e0b2272eb",
+      "uri": "fixture://drawbot-2r/acceptance-map"
+    },
+    "partial_artifacts_preserved": true,
+    "physical_safe_state_claimed": false,
+    "raw_telemetry_artifact": {
+      "availability": "embedded",
+      "evidence_level": "static",
+      "sha256": "sha256:7776702b816104f136597682532f816f6c84cc2ddcd06268d65710e05800776c",
+      "uri": "fixture://drawbot-2r/telemetry-events"
+    },
+    "recovery": {
+      "new_authorization_required": false,
+      "prior_result_id": null,
+      "restart_detected": false
+    },
+    "residual_risks": [
+      "nominal parameters are assumptions and have not been measured"
+    ],
+    "result_id": "ral.result.drawbot_2r.contract-validation-r1",
+    "result_revision": "1.0.0",
+    "schema_version": 1,
+    "start_timestamp": "2026-08-31T00:00:00Z",
+    "stop_timestamp": "2026-08-31T00:00:03Z",
+    "termination_reason": "completed",
+    "unperformed_validation": [
+      "all runtime, device, hardware, controls, PnP, HIL, field, and production validation"
+    ]
+  },
+  "run_authorization": {
+    "authorization_id": "ral.authorization.drawbot_2r.withheld-r1",
+    "authorization_revision": "1.0.0",
+    "authorization_status": "withheld",
+    "configuration_hash": "sha256:2930d9c03804d8821ae057aa590ab444d75a1f744bd38b7bc9d4fe0af3c3d40f",
+    "configuration_id": "ral.drawbot_2r.r1",
+    "contract_type": "run_authorization",
+    "contract_version": "1.0.0",
+    "e_stop_test_result": "not_run",
+    "experiment_id": "ral.experiment.drawbot_2r.contract-validation-r1",
+    "expiration": "2026-08-31T00:05:00Z",
+    "guard_state": "not_evaluated",
+    "issued_at": "2026-08-31T00:00:00Z",
+    "local_presence_confirmed": false,
+    "maximum_energy_class": "none",
+    "operator": "fixture:rp01",
+    "permitted_configuration": "ral.drawbot_2r.r1",
+    "physical_run_authorized": false,
+    "preflight_checklist_revision": "ral.preflight.not-performed-r1",
+    "schema_version": 1
+  },
+  "telemetry_events": [
+    {
+      "configuration_hash": "sha256:2930d9c03804d8821ae057aa590ab444d75a1f744bd38b7bc9d4fe0af3c3d40f",
+      "contract_type": "telemetry_event",
+      "contract_version": "1.0.0",
+      "event_type": "contract_validated",
+      "evidence_level": "static",
+      "experiment_id": "ral.experiment.drawbot_2r.contract-validation-r1",
+      "lifecycle_state": "validated",
+      "monotonic_offset_ns": 0,
+      "payload": {
+        "schema_count": 8
+      },
+      "record_id": "ral.record.drawbot_2r.0",
+      "record_kind": "event",
+      "schema_version": 1,
+      "sequence": 0,
+      "timestamp": "2026-08-31T00:00:00Z"
+    },
+    {
+      "configuration_hash": "sha256:2930d9c03804d8821ae057aa590ab444d75a1f744bd38b7bc9d4fe0af3c3d40f",
+      "contract_type": "telemetry_event",
+      "contract_version": "1.0.0",
+      "event_type": "validation_progress",
+      "evidence_level": "static",
+      "experiment_id": "ral.experiment.drawbot_2r.contract-validation-r1",
+      "lifecycle_state": "validated",
+      "monotonic_offset_ns": 1000000,
+      "payload": {
+        "fraction": 1.0,
+        "unit": "ratio"
+      },
+      "record_id": "ral.record.drawbot_2r.1",
+      "record_kind": "telemetry",
+      "schema_version": 1,
+      "sequence": 1,
+      "timestamp": "2026-08-31T00:00:01Z"
+    },
+    {
+      "configuration_hash": "sha256:2930d9c03804d8821ae057aa590ab444d75a1f744bd38b7bc9d4fe0af3c3d40f",
+      "contract_type": "telemetry_event",
+      "contract_version": "1.0.0",
+      "event_type": "authorization_withheld",
+      "evidence_level": "static",
+      "experiment_id": "ral.experiment.drawbot_2r.contract-validation-r1",
+      "lifecycle_state": "awaiting_local_authorization",
+      "monotonic_offset_ns": 2000000,
+      "payload": {
+        "physical_run_authorized": false
+      },
+      "record_id": "ral.record.drawbot_2r.2",
+      "record_kind": "event",
+      "schema_version": 1,
+      "sequence": 2,
+      "timestamp": "2026-08-31T00:00:02Z"
+    },
+    {
+      "configuration_hash": "sha256:2930d9c03804d8821ae057aa590ab444d75a1f744bd38b7bc9d4fe0af3c3d40f",
+      "contract_type": "telemetry_event",
+      "contract_version": "1.0.0",
+      "event_type": "completed",
+      "evidence_level": "static",
+      "experiment_id": "ral.experiment.drawbot_2r.contract-validation-r1",
+      "lifecycle_state": "completed",
+      "monotonic_offset_ns": 3000000,
+      "payload": {
+        "validation_level": "static"
+      },
+      "record_id": "ral.record.drawbot_2r.3",
+      "record_kind": "event",
+      "schema_version": 1,
+      "sequence": 3,
+      "timestamp": "2026-08-31T00:00:03Z"
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "configuration.schema.json",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": 1},
+    "active_joint_count": {"maximum": 2, "minimum": 1, "type": "integer"},
+    "calibration_set_id": {"$ref": "#/$defs/identifier"},
+    "component_envelope": {
+      "items": {"type": "string"},
+      "maxItems": 16,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "configuration_hash": {"$ref": "#/$defs/sha256"},
+    "configuration_id": {"$ref": "#/$defs/identifier"},
+    "configuration_kind": {
+      "enum": ["drawbot_2r", "rotary_pendulum_1", "pendubot_2link", "passive_multilink", "pnp_single_head"]
+    },
+    "configuration_revision": {"const": "1.0.0"},
+    "contract_type": {"const": "configuration"},
+    "contract_version": {"const": "1.0.0"},
+    "controller_firmware_set_id": {"$ref": "#/$defs/identifier"},
+    "design_status": {"enum": ["proposal", "accepted"]},
+    "experiment_schema_version": {"const": "1.0.0"},
+    "gravity_plane": {"enum": ["horizontal", "vertical"]},
+    "hardware_inventory_id": {"$ref": "#/$defs/identifier"},
+    "mechanical_revision": {"$ref": "#/$defs/identifier"},
+    "passive_joint_count": {"maximum": 3, "minimum": 0, "type": "integer"},
+    "permitted_tools": {
+      "items": {"enum": ["pen", "z_theta_vacuum_head"]},
+      "maxItems": 2,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "release": {
+      "additionalProperties": false,
+      "properties": {
+        "decision_evidence_id": {"oneOf": [{"$ref": "#/$defs/identifier"}, {"type": "null"}]},
+        "gate_id": {"enum": [null, "G4_MULTILINK", "G5_PNP_FEASIBILITY"]},
+        "status": {"enum": ["baseline", "gated", "released"]}
+      },
+      "required": ["status", "gate_id", "decision_evidence_id"],
+      "type": "object"
+    },
+    "safety_envelope": {
+      "additionalProperties": false,
+      "properties": {
+        "current_limits_a": {
+          "items": {"$ref": "#/$defs/current_limit"},
+          "maxItems": 2,
+          "minItems": 1,
+          "type": "array"
+        },
+        "duration_limit_s": {"exclusiveMinimum": 0, "maximum": 30, "type": "number"},
+        "state_limits": {
+          "items": {"$ref": "#/$defs/state_limit"},
+          "maxItems": 16,
+          "minItems": 1,
+          "type": "array"
+        }
+      },
+      "required": ["duration_limit_s", "current_limits_a", "state_limits"],
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "contract_version",
+    "contract_type",
+    "configuration_id",
+    "configuration_revision",
+    "configuration_kind",
+    "configuration_hash",
+    "mechanical_revision",
+    "hardware_inventory_id",
+    "calibration_set_id",
+    "controller_firmware_set_id",
+    "experiment_schema_version",
+    "active_joint_count",
+    "passive_joint_count",
+    "gravity_plane",
+    "permitted_tools",
+    "component_envelope",
+    "release",
+    "safety_envelope",
+    "design_status"
+  ],
+  "title": "Reference-platform configuration contract v1",
+  "type": "object",
+  "$defs": {
+    "current_limit": {
+      "additionalProperties": false,
+      "properties": {
+        "joint_id": {"pattern": "^joint_[1-9][0-9]*$", "type": "string"},
+        "max_abs_a": {"exclusiveMinimum": 0, "maximum": 5, "type": "number"}
+      },
+      "required": ["joint_id", "max_abs_a"],
+      "type": "object"
+    },
+    "identifier": {"pattern": "^[a-z0-9][a-z0-9._:-]{1,127}$", "type": "string"},
+    "sha256": {"pattern": "^sha256:[0-9a-f]{64}$", "type": "string"},
+    "state_limit": {
+      "additionalProperties": false,
+      "properties": {
+        "maximum": {"maximum": 100, "minimum": -100, "type": "number"},
+        "minimum": {"maximum": 100, "minimum": -100, "type": "number"},
+        "state": {"pattern": "^[a-z][a-z0-9_]{1,63}$", "type": "string"},
+        "unit": {"enum": ["rad", "rad_s", "m", "m_s"]}
+      },
+      "required": ["state", "minimum", "maximum", "unit"],
+      "type": "object"
+    }
+  }
+}

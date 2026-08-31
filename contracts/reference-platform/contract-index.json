@@ -1,0 +1,33 @@
+{
+  "canonicalization": {
+    "algorithm": "SHA-256",
+    "configuration_hash_excludes": ["configuration_hash"],
+    "id": "ral-json-c14n-v1",
+    "newline_included": false,
+    "serialization": "UTF-8 JSON; Unicode-code-point object-key order; array order preserved; no insignificant whitespace; strings already NFC; JSON strings use double quotes, escape quotation mark and reverse solidus, use \\b, \\t, \\n, \\f, and \\r for those controls, use lowercase \\u00xx for other U+0000..U+001F controls, leave solidus and all other Unicode scalar values unescaped; booleans distinct from numbers; negative zero and integral floats below 1e21 rendered as integers; other finite floats use lowercase shortest Python 3.12 representation with an integer exponent"
+  },
+  "contract_family": "robotics-autonomy-learning.reference-platform",
+  "contract_version": "1.0.0",
+  "contracts": [
+    {"contract_type": "configuration", "path": "v1/configuration.schema.json", "schema_id": "configuration.schema.json"},
+    {"contract_type": "hardware_inventory", "path": "v1/hardware-inventory.schema.json", "schema_id": "hardware-inventory.schema.json"},
+    {"contract_type": "plant_model", "path": "v1/plant-model.schema.json", "schema_id": "plant-model.schema.json"},
+    {"contract_type": "experiment", "path": "v1/experiment.schema.json", "schema_id": "experiment.schema.json"},
+    {"contract_type": "run_authorization", "path": "v1/run-authorization.schema.json", "schema_id": "run-authorization.schema.json"},
+    {"contract_type": "telemetry_event", "path": "v1/telemetry-event.schema.json", "schema_id": "telemetry-event.schema.json"},
+    {"contract_type": "result", "path": "v1/result.schema.json", "schema_id": "result.schema.json"},
+    {"contract_type": "evidence", "path": "v1/evidence.schema.json", "schema_id": "evidence.schema.json"}
+  ],
+  "evidence_levels": [
+    "static",
+    "simulated",
+    "protocol_replay",
+    "low_energy_bench",
+    "guarded_motion",
+    "controls_experiment",
+    "pnp_validation",
+    "external_alpha"
+  ],
+  "fixture_bundle_version": "1.0.0",
+  "schema_version": 1
+}

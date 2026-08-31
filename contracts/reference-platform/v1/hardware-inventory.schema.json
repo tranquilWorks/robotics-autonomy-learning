@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "hardware-inventory.schema.json",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": 1},
+    "calibration_set_id": {"$ref": "#/$defs/identifier"},
+    "components": {
+      "items": {"$ref": "#/$defs/component"},
+      "maxItems": 32,
+      "minItems": 1,
+      "type": "array"
+    },
+    "configuration_hash": {"$ref": "#/$defs/sha256"},
+    "configuration_id": {"$ref": "#/$defs/identifier"},
+    "contract_type": {"const": "hardware_inventory"},
+    "contract_version": {"const": "1.0.0"},
+    "controller_firmware_revisions": {
+      "additionalProperties": false,
+      "properties": {
+        "revisions": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "joint_id": {"pattern": "^joint_[1-9][0-9]*$", "type": "string"},
+              "revision": {"type": ["string", "null"]}
+            },
+            "required": ["joint_id", "revision"],
+            "type": "object"
+          },
+          "maxItems": 2,
+          "minItems": 1,
+          "type": "array"
+        },
+        "set_id": {"$ref": "#/$defs/identifier"},
+          "status": {"enum": ["not_installed", "installed_exact"]}
+      },
+      "required": ["set_id", "status", "revisions"],
+      "type": "object"
+    },
+    "encoder_identities": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "asset_id": {"oneOf": [{"$ref": "#/$defs/identifier"}, {"type": "null"}]},
+          "identity_status": {"enum": ["planned_not_owned", "exact_asset"]},
+          "joint_id": {"pattern": "^joint_[1-9][0-9]*$", "type": "string"},
+          "model": {"minLength": 1, "type": "string"}
+        },
+        "required": ["joint_id", "model", "asset_id", "identity_status"],
+        "type": "object"
+      },
+      "maxItems": 5,
+      "minItems": 1,
+      "type": "array"
+    },
+    "evidence_level": {"$ref": "#/$defs/evidence_level"},
+    "guard_configuration": {"minLength": 1, "type": "string"},
+    "identity_scope": {"enum": ["synthetic_not_as_built", "exact_as_built"]},
+    "inventory_id": {"$ref": "#/$defs/identifier"},
+    "inventory_revision": {"const": "1.0.0"},
+    "inventory_status": {"enum": ["planned_fixture", "as_built"]},
+    "joint_count": {"maximum": 5, "minimum": 1, "type": "integer"},
+    "platform_revision": {"$ref": "#/$defs/identifier"},
+    "power_configuration": {"minLength": 1, "type": "string"}
+  },
+  "required": [
+    "schema_version",
+    "contract_version",
+    "contract_type",
+    "inventory_id",
+    "inventory_revision",
+    "inventory_status",
+    "identity_scope",
+    "platform_revision",
+    "configuration_id",
+    "configuration_hash",
+    "joint_count",
+    "controller_firmware_revisions",
+    "encoder_identities",
+    "power_configuration",
+    "guard_configuration",
+    "calibration_set_id",
+    "components",
+    "evidence_level"
+  ],
+  "title": "Reference-platform hardware inventory contract v1",
+  "type": "object",
+  "$defs": {
+    "component": {
+      "additionalProperties": false,
+      "properties": {
+        "asset_id": {"oneOf": [{"$ref": "#/$defs/identifier"}, {"type": "null"}]},
+        "identity_status": {"enum": ["planned_not_owned", "exact_asset"]},
+        "instance_id": {"$ref": "#/$defs/identifier"},
+        "model": {"minLength": 1, "type": "string"},
+        "role": {"minLength": 1, "type": "string"}
+      },
+      "required": ["instance_id", "role", "model", "asset_id", "identity_status"],
+      "type": "object"
+    },
+    "evidence_level": {"enum": ["static", "simulated", "protocol_replay", "low_energy_bench", "guarded_motion", "controls_experiment", "pnp_validation", "external_alpha"]},
+    "identifier": {"pattern": "^[a-z0-9][a-z0-9._:-]{1,127}$", "type": "string"},
+    "sha256": {"pattern": "^sha256:[0-9a-f]{64}$", "type": "string"}
+  }
+}
