@@ -1,0 +1,11 @@
+{
+  "canonicalization": "ral-json-c14n-v1",
+  "configuration_hashes": {
+    "drawbot_2r": "sha256:2930d9c03804d8821ae057aa590ab444d75a1f744bd38b7bc9d4fe0af3c3d40f",
+    "passive_multilink": "sha256:f0c881e97c676bd8df9e25e5506865fa5ba41c122601e83147d6a855d7be2adc",
+    "pendubot_2link": "sha256:71d0298ee901706f584bc35fa43f2b65ed520ba32a05b5035cac80846d543545",
+    "pnp_single_head": "sha256:5f80e4d7049b4f8f07e3eb439fc01bb82c2902ca4b7343f137ba268477aa1e01",
+    "rotary_pendulum_1": "sha256:3ad42a0f8795d8e8cb16ec4c476742397e3453b9a52b9d990f57a2e1112ca809"
+  },
+  "fixture_version": "1.0.0"
+}

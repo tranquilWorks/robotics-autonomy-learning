@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "evidence.schema.json",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": 1},
+    "acceptance_items": {"items": {"minLength": 1, "type": "string"}, "maxItems": 64, "minItems": 1, "type": "array"},
+    "artifacts": {"items": {"$ref": "#/$defs/artifact"}, "maxItems": 16, "minItems": 2, "type": "array"},
+    "claim_boundary": {"minLength": 1, "type": "string"},
+    "configuration_hash": {"$ref": "#/$defs/sha256"},
+    "contract_type": {"const": "evidence"},
+    "contract_version": {"const": "1.0.0"},
+    "evidence_id": {"$ref": "#/$defs/identifier"},
+    "evidence_revision": {"const": "1.0.0"},
+    "required_statements": {
+      "const": [
+        "SOFTWARE CONTRACT ONLY",
+        "HARDWARE NOT RUN",
+        "TRANQUILITY NOT CONTACTED",
+        "CONTROLS-GNC NOT MODIFIED",
+        "RELEASE NOT PERFORMED"
+      ]
+    },
+    "residual_risks": {"items": {"minLength": 1, "type": "string"}, "maxItems": 64, "minItems": 1, "type": "array"},
+    "result_id": {"$ref": "#/$defs/identifier"},
+    "unperformed_validation": {"items": {"minLength": 1, "type": "string"}, "maxItems": 64, "minItems": 1, "type": "array"},
+    "validation_level": {"$ref": "#/$defs/evidence_level"}
+  },
+  "required": [
+    "schema_version",
+    "contract_version",
+    "contract_type",
+    "evidence_id",
+    "evidence_revision",
+    "result_id",
+    "configuration_hash",
+    "validation_level",
+    "claim_boundary",
+    "required_statements",
+    "artifacts",
+    "acceptance_items",
+    "residual_risks",
+    "unperformed_validation"
+  ],
+  "title": "Reference-platform evidence contract v1",
+  "type": "object",
+  "$defs": {
+    "artifact": {
+      "additionalProperties": false,
+      "properties": {
+        "availability": {"enum": ["embedded", "not_produced"]},
+        "evidence_level": {"$ref": "#/$defs/evidence_level"},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "uri": {"pattern": "^fixture://[a-z0-9][a-z0-9/_-]{0,255}$", "type": "string"}
+      },
+      "required": ["uri", "sha256", "availability", "evidence_level"],
+      "type": "object"
+    },
+    "evidence_level": {"enum": ["static", "simulated", "protocol_replay", "low_energy_bench", "guarded_motion", "controls_experiment", "pnp_validation", "external_alpha"]},
+    "identifier": {"pattern": "^[a-z0-9][a-z0-9._:-]{1,127}$", "type": "string"},
+    "sha256": {"pattern": "^sha256:[0-9a-f]{64}$", "type": "string"}
+  }
+}

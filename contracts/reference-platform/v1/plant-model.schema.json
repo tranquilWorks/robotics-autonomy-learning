@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "plant-model.schema.json",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": 1},
+    "configuration_hash": {"$ref": "#/$defs/sha256"},
+    "configuration_id": {"$ref": "#/$defs/identifier"},
+    "contract_type": {"const": "plant_model"},
+    "contract_version": {"const": "1.0.0"},
+    "encoder_zero_offsets_rad": {"items": {"maximum": 6.4, "minimum": -6.4, "type": "number"}, "maxItems": 5, "minItems": 1, "type": "array"},
+    "evidence_level": {"$ref": "#/$defs/evidence_level"},
+    "inertia_kg_m2": {"items": {"maximum": 20, "minimum": 0.000001, "type": "number"}, "maxItems": 5, "minItems": 1, "type": "array"},
+    "joint_friction_model": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "coulomb_nm": {"maximum": 10, "minimum": 0, "type": "number"},
+          "joint_id": {"pattern": "^joint_[1-9][0-9]*$", "type": "string"},
+          "model": {"const": "viscous_plus_coulomb"},
+          "viscous_nm_s_rad": {"maximum": 10, "minimum": 0, "type": "number"}
+        },
+        "required": ["joint_id", "model", "viscous_nm_s_rad", "coulomb_nm"],
+        "type": "object"
+      },
+      "maxItems": 5,
+      "minItems": 1,
+      "type": "array"
+    },
+    "link_lengths_m": {"items": {"maximum": 2, "minimum": 0.001, "type": "number"}, "maxItems": 5, "minItems": 1, "type": "array"},
+    "link_masses_kg": {"items": {"maximum": 20, "minimum": 0.001, "type": "number"}, "maxItems": 5, "minItems": 1, "type": "array"},
+    "parameter_source": {"enum": ["deterministic_nominal_fixture", "simulated_identification", "measured_identification"]},
+    "plant_model_id": {"$ref": "#/$defs/identifier"},
+    "plant_model_revision": {"const": "1.0.0"},
+    "transmission_ratios": {"items": {"maximum": 100, "minimum": 0.1, "type": "number"}, "maxItems": 2, "minItems": 1, "type": "array"},
+    "uncertainty": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "basis": {"enum": ["assumed_not_measured", "simulated_interval", "measured_interval"]},
+          "parameter": {"minLength": 1, "type": "string"},
+          "plus_minus": {"maximum": 100, "minimum": 0, "type": "number"},
+          "unit": {"minLength": 1, "type": "string"}
+        },
+        "required": ["parameter", "plus_minus", "unit", "basis"],
+        "type": "object"
+      },
+      "maxItems": 32,
+      "minItems": 1,
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "contract_version",
+    "contract_type",
+    "plant_model_id",
+    "plant_model_revision",
+    "configuration_id",
+    "configuration_hash",
+    "link_lengths_m",
+    "link_masses_kg",
+    "inertia_kg_m2",
+    "joint_friction_model",
+    "transmission_ratios",
+    "encoder_zero_offsets_rad",
+    "parameter_source",
+    "uncertainty",
+    "evidence_level"
+  ],
+  "title": "Reference-platform plant model contract v1",
+  "type": "object",
+  "$defs": {
+    "evidence_level": {"enum": ["static", "simulated", "protocol_replay", "low_energy_bench", "guarded_motion", "controls_experiment", "pnp_validation", "external_alpha"]},
+    "identifier": {"pattern": "^[a-z0-9][a-z0-9._:-]{1,127}$", "type": "string"},
+    "sha256": {"pattern": "^sha256:[0-9a-f]{64}$", "type": "string"}
+  }
+}

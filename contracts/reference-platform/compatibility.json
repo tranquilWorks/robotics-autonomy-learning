@@ -1,0 +1,31 @@
+{
+  "approved_contract_revision": null,
+  "canonicalization": "ral-json-c14n-v1",
+  "consumer_records": [
+    {
+      "adoption_status": "not_started",
+      "contract_version": null,
+      "repository": "controls-gnc-learning",
+      "required_next_step": "separate governed intake after an approved producer revision is pinned"
+    },
+    {
+      "adoption_status": "not_started",
+      "contract_version": null,
+      "repository": "tranquility-te",
+      "required_next_step": "separate transport-free fake/replay intake after target and controls approval"
+    }
+  ],
+  "contract_family": "robotics-autonomy-learning.reference-platform",
+  "contract_version": "1.0.0",
+  "control_revision": "35a09aca04b4f64cc97249ddd3e81e6f46faba6b",
+  "evidence_level": "static",
+  "exchanged_fixture_manifest": "reference-platform/fixtures/canonical-hashes.json",
+  "producer": {
+    "declared_baseline": "f8807640258f1a6c1c77f1dcc9e61734551c585b",
+    "implementation_start_revision": "ae5764598da09f8c8b9d3629b8f64369c9c7025e",
+    "repository": "robotics-autonomy-learning"
+  },
+  "rollback_policy": "Restore the last approved pinned v1 schema and fixture set; retain the rejected revision and reason.",
+  "schema_version": 1,
+  "upgrade_policy": "Unknown versions and fields are rejected; introduce a separately reviewed version with side-by-side fixtures and explicit consumer adoption."
+}

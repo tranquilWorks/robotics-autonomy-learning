@@ -1,0 +1,98 @@
+schema_version: 1
+batch:
+  id: RP01
+  title: Establish reconfigurable reference-platform contracts
+  goal: >-
+    Add the target-owned, versioned, deterministic contract and fixture baseline
+    for the drawbot, unstable controls plant, Tranquility handoff, and gated PnP
+    expansion without accessing hardware or modifying another repository.
+sources:
+  product: products/robotics-autonomy-learning/product.yaml
+  requirements:
+  - products/robotics-autonomy-learning/PRD.md#cap-rp-contract-01--versioned-plant-contracts
+  - products/robotics-autonomy-learning/PRD.md#cap-rp-safety-01--independent-physical-safety
+  - products/robotics-autonomy-learning/reference-platform/HARNESS.yaml
+  - products/robotics-autonomy-learning/reference-platform/ACCEPTANCE.yaml
+  milestone: products/robotics-autonomy-learning/milestones/RAL-RP0.md
+  baseline_commit: f8807640258f1a6c1c77f1dcc9e61734551c585b
+  control_plane_repository: tranquilWorks/portfolio-control
+  control_plane_path: products/robotics-autonomy-learning/batches/RP01.yaml
+  control_plane_revision: 35a09aca04b4f64cc97249ddd3e81e6f46faba6b  # pragma: allowlist secret
+dependencies: []
+scope:
+  allowed_paths:
+  - reference-platform/**
+  - contracts/reference-platform/**
+  - docs/plans/RP01-*.md
+  - docs/evidence/RP01-*.md
+  - tests/test_reference_platform*.py
+  - README.md
+  - START_HERE.md
+  forbidden_paths:
+  - .github/**
+  - .codex/**
+  - .agents/**
+  - AGENTS.md
+  - contracts/course*.json
+  - curriculum/**
+  - modules/**
+  - launch_lesson.m
+  - run_module_checks.m
+  - Makefile
+acceptance:
+- Add a concise target-local reference-platform overview and ownership boundary.
+- Define versioned configuration, hardware-inventory, plant-model, experiment, run-authorization, telemetry/event, result, and evidence contracts.
+- Include valid deterministic fixtures for drawbot, one-link pendulum, underactuated two-link, passive multi-link, and gated single-head PnP configurations.
+- Include invalid fixtures for missing identity, conflicting configuration, absent local authorization, unbounded current/duration/state, unsupported PnP release, and conflated evidence level.
+- Produce deterministic canonical serialization and configuration hashes.
+- Preserve the existing 24-module curriculum, tutor flow, and manifest identities unchanged.
+- Document separate future handoffs to controls-gnc-learning and tranquility-te without editing either repository.
+- Tests and implementation perform no CAN, serial or USB-device, GPIO, camera, vacuum, motor, owner-credential, network-service, fabrication, procurement, energization, or physical action.
+- Evidence states SOFTWARE CONTRACT ONLY, HARDWARE NOT RUN, TRANQUILITY NOT CONTACTED, CONTROLS-GNC NOT MODIFIED, and RELEASE NOT PERFORMED.
+validation:
+  local:
+  - MATLAB_LEARNING_VERIFY_PROFILE=contract python3 scripts/verify.py
+  - MATLAB_LEARNING_VERIFY_PROFILE=quick python3 -m unittest discover -s tests -v
+  - MATLAB_LEARNING_VERIFY_PROFILE=full ./scripts/agent-verify.sh
+  focused_tests_to_add:
+  - reference-platform schema and version identity
+  - valid configuration fixture roundtrip and stable digest
+  - invalid configuration and safety-envelope rejection
+  - evidence-level separation
+  - no-device-access contract regression
+  required_ci:
+  - Portfolio Control validation
+  - target Quality workflow
+risk:
+  class: high
+  hazards:
+  - contract drift between robotics controls and Tranquility
+  - a software fixture is misrepresented as a working robot
+  - physical or device behavior leaks into a product-data batch
+  - PnP modularity is mistaken for placement capability
+  - unrelated curriculum files change
+  stop_conditions:
+  - target baseline or harness provenance has drifted
+  - required schema ownership is ambiguous
+  - implementation requires hardware or live services
+  - changes exceed allowed paths
+  - another repository must change in the same PR
+  - a test depends on owner credentials or device enumeration
+rollback:
+  strategy: >-
+    Revert RP01 target additions. Preserve this control-plane design and record
+    the rejected contract revision and reason; do not remove or rewrite curriculum
+    history.
+evidence:
+  output:
+  - docs/evidence/RP01-<date>.md
+  - exact target and control-plane revisions
+  - schema and fixture inventory
+  - validation commands and exit results
+  - acceptance map and limitations
+  - cross-repository handoff revision
+  claim_boundary: >-
+    Target-local static contracts, fixtures, deterministic hashes, and retained
+    software verification only. No MATLAB-runtime, numerical-fidelity, device,
+    hardware, safe-state, drawbot, pendulum, PnP, Tranquility, controls, HIL,
+    field, production, or crowdfunding capability is implied.
